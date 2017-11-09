@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native';
-import App from './App';
+import { Login } from "./src/screens/login/login";
 
-AppRegistry.registerComponent('aloner', () => App);
+AppRegistry.registerComponent('aloner', () => Login);

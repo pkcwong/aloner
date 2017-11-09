@@ -4,6 +4,8 @@ import { Input, Button } from 'nachos-ui';
 
 import { style } from "./style";
 
+let firebase = require('firebase');
+
 export class Login extends React.Component {
 
 	constructor(props) {
@@ -47,7 +49,11 @@ export class Login extends React.Component {
 				<Button
 					style={style.login}
 					onPress={() => {
-						console.log("Button pressed!");
+						firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then(() => {
+							console.log("login ok");
+						}).catch((err) => {
+							console.log(err);
+						});
 					}}
 				>
 					Login

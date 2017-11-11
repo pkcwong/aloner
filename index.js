@@ -1,6 +1,17 @@
 import { AppRegistry } from 'react-native';
-import { Broadcast } from "./src/screens/broadcast/broadcast";
+import { Login } from "./src/screens/login/login";
+
+const firebase = require('firebase');
 
 AppRegistry.registerComponent('aloner', () => {
-	return Broadcast;
+	let config = {
+		apiKey: "AIzaSyBBlMxoUFYISp1HZ11GB9AUM5fBTpuDtjc",
+		authDomain: "aloner-firebase.firebaseapp.com",
+		databaseURL: "https://aloner-firebase.firebaseio.com",
+		projectId: "aloner-firebase",
+		storageBucket: "aloner-firebase.appspot.com",
+		messagingSenderId: "1035212202971"
+	};
+	firebase.initializeApp(config);
+	return Login;
 });

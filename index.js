@@ -1,5 +1,5 @@
 import { AppRegistry } from 'react-native';
-import { Login } from "./src/screens/login/login";
+import { NavigationStack } from "./src/screens/navigator";
 
 const firebase = require('firebase');
 
@@ -13,5 +13,5 @@ AppRegistry.registerComponent('aloner', () => {
 		messagingSenderId: "1035212202971"
 	};
 	firebase.initializeApp(config);
-	return Login;
+	return NavigationStack;
 });

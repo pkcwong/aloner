@@ -1,2 +1,6 @@
 before_script: cd android
 language: android
+android:
+  components:
+    - build-tools-23.0.3
+    - android-23

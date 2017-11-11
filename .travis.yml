@@ -17,5 +17,4 @@ licenses:
     - 'android-sdk-license-.+'
     - 'google-gdk-license-.+'
 script:
-- npm run ci
 - cd android && ./gradlew assembleRelease

@@ -1,4 +1,6 @@
 import { AppRegistry } from 'react-native';
-import App from './App';
+import { Broadcast } from "./src/screens/broadcast/broadcast";
 
-AppRegistry.registerComponent('aloner', () => App);
+AppRegistry.registerComponent('aloner', () => {
+	return Broadcast;
+});

@@ -7,4 +7,4 @@ export const FIREBASE_CONFIG = {
 	messagingSenderId: "1035212202971"
 };
 
-export const HOST = 'http://10.89.157.93:3000';
+export const HOST = 'http://192.168.11.30:3000';

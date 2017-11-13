@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { AsyncStorage, View } from 'react-native';
 import { GiftedChat } from 'react-native-gifted-chat';
 import { style } from "./style";
 import { HOST } from "../../lib/server/server";
@@ -22,7 +22,13 @@ export class Broadcast extends React.Component {
 	}
 
 	componentWillMount() {
-
+		AsyncStorage.getItem('@aloner:broadcasts').then((res) => {
+			this.setState({
+				messages: res ? res : []
+			});
+		}).catch((err) => {
+			console.log(err);
+		});
 		firebase.auth().onAuthStateChanged((user) => {
 			if (user) {
 				fetch(HOST + '/api/user', {
@@ -75,6 +81,7 @@ export class Broadcast extends React.Component {
 				},
 				body: JSON.stringify({
 					method: 'dump',
+					createdAt: this.state.messages.length > 0 ? this.state.messages[0]['createdAt'] : 0,
 					token: token
 				})
 			}).then((response) => {
@@ -101,9 +108,11 @@ export class Broadcast extends React.Component {
 										}
 									})
 								});
-							}).then((err) => {
+							}).catch((err) => {
 								console.log(err);
 							});
+						}).catch((err) => {
+							console.log(err);
 						});
 					});
 				}).catch((err) => {

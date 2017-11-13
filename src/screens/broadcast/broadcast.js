@@ -2,6 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { GiftedChat } from 'react-native-gifted-chat';
 import { style } from "./style";
+import { HOST } from "../../lib/server/server";
 
 let firebase = require('firebase');
 
@@ -15,16 +16,38 @@ export class Broadcast extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			messages: []
+			messages: [],
+			user: {}
 		};
 	}
 
 	componentWillMount() {
-		if (firebase.auth().currentUser) {
-
-		} else {
-			this.props.navigation.navigate('Login');
-		}
+		firebase.auth().onAuthStateChanged((user) => {
+			if (user) {
+				fetch(HOST + '/api/user', {
+					method: 'POST',
+					headers: {
+						'Accept': 'application/json',
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						uid: user.uid
+					})
+				}).then((response) => {
+					response.json().then((doc) => {
+						this.setState({
+							user: {
+								_id: user.uid,
+								name: doc['firstname'] + ' ' + doc['lastname']
+							}
+						})
+					});
+				});
+				this.update();
+			} else {
+				this.props.navigation.navigate('Login');
+			}
+		});
 	}
 
 	render() {
@@ -34,9 +57,80 @@ export class Broadcast extends React.Component {
 			>
 				<GiftedChat
 					messages={this.state.messages}
+					onSend={(messages) => this.onSend(messages)}
+					user={this.state.user}
 				/>
 			</View>
 		);
+	}
+
+	update() {
+		firebase.auth().currentUser.getIdToken(true).then((token) => {
+			fetch(HOST + '/api/broadcast', {
+				method: 'POST',
+				headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					method: 'dump',
+					token: token
+				})
+			}).then((response) => {
+				response.json().then((data_msg) => {
+					console.log(data_msg);
+					data_msg.forEach((item) => {
+						fetch(HOST + '/api/user', {
+							method: 'POST',
+							headers: {
+								'Accept': 'application/json',
+								'Content-Type': 'application/json'
+							},
+							body: JSON.stringify({
+								uid: item['user']['_id']
+							})
+						}).then((response) => {
+							response.json().then((data_user) => {
+								item['user']['name'] = data_user['firstname'] + ' ' + data_user['lastname'];
+								console.log(item);
+								this.setState({
+									messages: this.state.messages.concat(item)
+								});
+							}).then((err) => {
+								console.log(err);
+							});
+						});
+					});
+				}).catch((err) => {
+					console.log(err);
+				});
+			}).catch((err) => {
+				console.log(err);
+			});
+		});
+	}
+
+	onSend(messages) {
+		firebase.auth().currentUser.getIdToken(true).then((token) => {
+			messages.forEach((item) => {
+				fetch(HOST + '/api/broadcast', {
+					method: 'POST',
+					headers: {
+						'Accept': 'application/json',
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						method: 'send',
+						token: token,
+						text: item['text']
+					})
+				}).then((response) => {
+					this.update();
+				}).catch((err) => {
+					console.log(err);
+				});
+			});
+		});
 	}
 
 }

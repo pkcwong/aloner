@@ -22,6 +22,7 @@ export class Broadcast extends React.Component {
 	}
 
 	componentWillMount() {
+
 		firebase.auth().onAuthStateChanged((user) => {
 			if (user) {
 				fetch(HOST + '/api/user', {
@@ -43,7 +44,7 @@ export class Broadcast extends React.Component {
 						})
 					});
 				});
-				this.update();
+				this.refresher();
 			} else {
 				this.props.navigation.navigate('Login');
 			}
@@ -64,7 +65,7 @@ export class Broadcast extends React.Component {
 		);
 	}
 
-	update() {
+	refresher() {
 		firebase.auth().currentUser.getIdToken(true).then((token) => {
 			fetch(HOST + '/api/broadcast', {
 				method: 'POST',
@@ -78,7 +79,6 @@ export class Broadcast extends React.Component {
 				})
 			}).then((response) => {
 				response.json().then((data_msg) => {
-					console.log(data_msg);
 					data_msg.forEach((item) => {
 						fetch(HOST + '/api/user', {
 							method: 'POST',
@@ -92,9 +92,14 @@ export class Broadcast extends React.Component {
 						}).then((response) => {
 							response.json().then((data_user) => {
 								item['user']['name'] = data_user['firstname'] + ' ' + data_user['lastname'];
-								console.log(item);
 								this.setState({
-									messages: this.state.messages.concat(item)
+									messages: this.state.messages.concat(item).sort((a, b) => {
+										if (a['createdAt'] < b['createdAt']) {
+											return 1;
+										} else {
+											return -1;
+										}
+									})
 								});
 							}).then((err) => {
 								console.log(err);
@@ -125,7 +130,7 @@ export class Broadcast extends React.Component {
 						text: item['text']
 					})
 				}).then((response) => {
-					this.update();
+					this.refresher();
 				}).catch((err) => {
 					console.log(err);
 				});

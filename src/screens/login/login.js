@@ -1,12 +1,16 @@
 import React from 'react';
 import { View } from 'react-native';
 import { Input, Button } from 'nachos-ui';
-
 import { style } from "./style";
 
 let firebase = require('firebase');
 
 export class Login extends React.Component {
+
+	static navigationOptions = {
+		title: 'Login',
+		header: null
+	};
 
 	constructor(props) {
 		super(props);
@@ -50,7 +54,7 @@ export class Login extends React.Component {
 					style={style.login}
 					onPress={() => {
 						firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then(() => {
-							console.log("login ok");
+							this.props.navigation.goBack();
 						}).catch((err) => {
 							console.log(err);
 						});

@@ -5,8 +5,15 @@ import firebase from 'react-native-firebase';
 
 AppRegistry.registerComponent('aloner', () => {
 	firebase.initializeApp(FIREBASE_CONFIG);
-	firebase.messaging().getToken().then((token) => {
-		console.log(token);
+	firebase.auth().onAuthStateChanged((user) => {
+		if (user) {
+			firebase.messaging().getToken().then((token) => {
+
+			}).catch((err) => {
+				console.error(err);
+			});
+		}
 	});
+
 	return NavigationStack;
 });

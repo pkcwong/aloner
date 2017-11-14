@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1035212202971",
+    "firebase_url": "https://aloner-firebase.firebaseio.com",
+    "project_id": "aloner-firebase",
+    "storage_bucket": "aloner-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1035212202971:android:7ee6a5b50baa10fc",
+        "android_client_info": {
+          "package_name": "com.aloner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1035212202971-k2r9m0uivkj3qfj808lksju0irh05ppj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2QZ_EvbbA360tJpVit-eZ6-CLFWbnP08"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

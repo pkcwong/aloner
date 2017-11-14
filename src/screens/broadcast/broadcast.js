@@ -3,8 +3,7 @@ import { AsyncStorage, View } from 'react-native';
 import { GiftedChat } from 'react-native-gifted-chat';
 import { style } from "./style";
 import { HOST } from "../../lib/server/server";
-
-let firebase = require('firebase');
+import firebase from 'react-native-firebase';
 
 export class Broadcast extends React.Component {
 

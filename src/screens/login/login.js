@@ -2,8 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { Input, Button } from 'nachos-ui';
 import { style } from "./style";
-
-let firebase = require('firebase');
+import firebase from 'react-native-firebase';
 
 export class Login extends React.Component {
 

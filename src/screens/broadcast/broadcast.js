@@ -52,7 +52,7 @@ export class Broadcast extends React.Component {
 			}
 		});
 		firebase.messaging().onMessage((payload) => {
-			console.log('RECEIVED: ' + payload);
+			this.refresher();
 		});
 		this.refresher();
 	}
@@ -107,23 +107,23 @@ export class Broadcast extends React.Component {
 								})
 							});
 						}).catch((err) => {
-							console.log(err);
+							console.error(err);
 						});
 					}).catch((err) => {
-						console.log(err);
+						console.error(err);
 					});
 				});
 			}).catch((err) => {
-				console.log(err);
+				console.error(err);
 			});
 		}).catch((err) => {
-			console.log(err);
+			console.error(err);
 		});
 	}
 
 	onSend(messages) {
 		if (firebase.auth().currentUser) {
-			firebase.auth().currentUser.getIdToken(true).then((token) => {
+			firebase.auth().currentUser.getIdToken().then((token) => {
 				messages.forEach((item) => {
 					fetch(HOST + '/api/broadcast', {
 						method: 'POST',
@@ -136,12 +136,12 @@ export class Broadcast extends React.Component {
 							token: token,
 							text: item['text']
 						})
-					}).then((response) => {
-						this.refresher();
 					}).catch((err) => {
-						console.log(err);
+						console.error(err);
 					});
 				});
+			}).catch((err) => {
+				console.error(err);
 			});
 		} else {
 			this.props.navigation.navigate('Login');

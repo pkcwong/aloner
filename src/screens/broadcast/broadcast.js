@@ -3,8 +3,7 @@ import { AsyncStorage, View } from 'react-native';
 import { GiftedChat } from 'react-native-gifted-chat';
 import { style } from "./style";
 import { HOST } from "../../lib/server/server";
-
-let firebase = require('firebase');
+import firebase from 'react-native-firebase';
 
 export class Broadcast extends React.Component {
 
@@ -50,11 +49,12 @@ export class Broadcast extends React.Component {
 						})
 					});
 				});
-				this.refresher();
-			} else {
-				this.props.navigation.navigate('Login');
 			}
 		});
+		firebase.messaging().onMessage((payload) => {
+			this.refresher();
+		});
+		this.refresher();
 	}
 
 	render() {
@@ -72,79 +72,80 @@ export class Broadcast extends React.Component {
 	}
 
 	refresher() {
-		firebase.auth().currentUser.getIdToken(true).then((token) => {
-			fetch(HOST + '/api/broadcast', {
-				method: 'POST',
-				headers: {
-					'Accept': 'application/json',
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({
-					method: 'dump',
-					createdAt: this.state.messages.length > 0 ? this.state.messages[0]['createdAt'] : 0,
-					token: token
-				})
-			}).then((response) => {
-				response.json().then((data_msg) => {
-					data_msg.forEach((item) => {
-						fetch(HOST + '/api/user', {
-							method: 'POST',
-							headers: {
-								'Accept': 'application/json',
-								'Content-Type': 'application/json'
-							},
-							body: JSON.stringify({
-								uid: item['user']['_id']
-							})
-						}).then((response) => {
-							response.json().then((data_user) => {
-								item['user']['name'] = data_user['firstname'] + ' ' + data_user['lastname'];
-								this.setState({
-									messages: this.state.messages.concat(item).sort((a, b) => {
-										if (a['createdAt'] < b['createdAt']) {
-											return 1;
-										} else {
-											return -1;
-										}
-									})
-								});
-							}).catch((err) => {
-								console.log(err);
+		fetch(HOST + '/api/broadcast', {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				method: 'dump',
+				createdAt: this.state.messages.length > 0 ? this.state.messages[0]['createdAt'] : 0
+			})
+		}).then((response) => {
+			response.json().then((data_msg) => {
+				data_msg.forEach((item) => {
+					fetch(HOST + '/api/user', {
+						method: 'POST',
+						headers: {
+							'Accept': 'application/json',
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify({
+							uid: item['user']['_id']
+						})
+					}).then((response) => {
+						response.json().then((data_user) => {
+							item['user']['name'] = data_user['firstname'] + ' ' + data_user['lastname'];
+							this.setState({
+								messages: this.state.messages.concat(item).sort((a, b) => {
+									if (a['createdAt'] < b['createdAt']) {
+										return 1;
+									} else {
+										return -1;
+									}
+								})
 							});
 						}).catch((err) => {
-							console.log(err);
+							console.error(err);
 						});
+					}).catch((err) => {
+						console.error(err);
 					});
-				}).catch((err) => {
-					console.log(err);
 				});
 			}).catch((err) => {
-				console.log(err);
+				console.error(err);
 			});
+		}).catch((err) => {
+			console.error(err);
 		});
 	}
 
 	onSend(messages) {
-		firebase.auth().currentUser.getIdToken(true).then((token) => {
-			messages.forEach((item) => {
-				fetch(HOST + '/api/broadcast', {
-					method: 'POST',
-					headers: {
-						'Accept': 'application/json',
-						'Content-Type': 'application/json'
-					},
-					body: JSON.stringify({
-						method: 'send',
-						token: token,
-						text: item['text']
-					})
-				}).then((response) => {
-					this.refresher();
-				}).catch((err) => {
-					console.log(err);
+		if (firebase.auth().currentUser) {
+			firebase.auth().currentUser.getIdToken().then((token) => {
+				messages.forEach((item) => {
+					fetch(HOST + '/api/broadcast', {
+						method: 'POST',
+						headers: {
+							'Accept': 'application/json',
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify({
+							method: 'send',
+							token: token,
+							text: item['text']
+						})
+					}).catch((err) => {
+						console.error(err);
+					});
 				});
+			}).catch((err) => {
+				console.error(err);
 			});
-		});
+		} else {
+			this.props.navigation.navigate('Login');
+		}
 	}
 
 }

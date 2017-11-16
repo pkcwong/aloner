@@ -23,15 +23,15 @@ AppRegistry.registerComponent('aloner', () => {
 						})
 					}).catch((err) => {
 						console.error(err);
-					})
+					});
 				}).catch((err) => {
 					console.error(err);
 				});
-				firebase.messaging().subscribeToTopic('broadcast');
 			}).catch((err) => {
 				console.error(err);
 			});
 		}
 	});
+	firebase.messaging().subscribeToTopic('broadcast');
 	return NavigationStack;
 });

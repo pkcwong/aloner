@@ -22,9 +22,17 @@ export class Broadcast extends React.Component {
 
 	componentWillMount() {
 		AsyncStorage.getItem('@aloner:broadcasts').then((res) => {
-			this.setState({
-				messages: res ? res : []
-			});
+			let cache = JSON.parse(res);
+			if (cache && cache['data']) {
+				this.setState({
+					messages: cache['data']
+				});
+			} else {
+				this.setState({
+					messages: []
+				});
+			}
+			this.refresher();
 		}).catch((err) => {
 			console.log(err);
 		});
@@ -46,7 +54,7 @@ export class Broadcast extends React.Component {
 								_id: user.uid,
 								name: doc['firstname'] + ' ' + doc['lastname']
 							}
-						})
+						});
 					});
 				});
 			}
@@ -54,7 +62,6 @@ export class Broadcast extends React.Component {
 		firebase.messaging().onMessage((payload) => {
 			this.refresher();
 		});
-		this.refresher();
 	}
 
 	render() {
@@ -105,6 +112,9 @@ export class Broadcast extends React.Component {
 										return -1;
 									}
 								})
+							});
+							AsyncStorage.setItem('@aloner:broadcasts', JSON.stringify({data: this.state.messages})).catch((err) => {
+								console.error(err);
 							});
 						}).catch((err) => {
 							console.error(err);

@@ -1,6 +1,7 @@
 import { StackNavigator } from 'react-navigation';
 import { Login } from "./login/login";
 import { Broadcast } from "./broadcast/broadcast";
+import { Events } from "./events/events";
 
 export const NavigationStack = StackNavigator(
 	{
@@ -10,8 +11,11 @@ export const NavigationStack = StackNavigator(
 		Broadcast: {
 			screen: Broadcast
 		},
+		Events: {
+			screen: Events
+		},
 	},
 	{
-		initialRouteName: 'Broadcast'
+		initialRouteName: 'Events'
 	}
 );

@@ -25,4 +25,4 @@ cd outputs/
 mkdir apk
 cd apk/
 adb install -r app-debug.apk
-
+read -n1 -r -p "Process ended." key

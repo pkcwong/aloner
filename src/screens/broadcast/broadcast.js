@@ -23,13 +23,22 @@ export class Broadcast extends React.Component {
 	componentWillMount() {
 		AsyncStorage.getItem('@aloner:broadcasts').then((res) => {
 			let cache = JSON.parse(res);
-			if (cache && cache['data']) {
+			if (cache && cache['messages']) {
 				this.setState({
-					messages: cache['data']
+					messages: cache['messages']
 				});
 			} else {
 				this.setState({
 					messages: []
+				});
+			}
+			if (cache && cache['user']) {
+				this.setState({
+					user: cache['user']
+				});
+			} else {
+				this.setState({
+					user: {}
 				});
 			}
 			this.refresher();
@@ -54,6 +63,9 @@ export class Broadcast extends React.Component {
 								_id: user.uid,
 								name: doc['firstname'] + ' ' + doc['lastname']
 							}
+						});
+						AsyncStorage.setItem('@aloner:broadcasts', JSON.stringify(this.state)).catch((err) => {
+							console.error(err);
 						});
 					});
 				});
@@ -113,7 +125,7 @@ export class Broadcast extends React.Component {
 									}
 								})
 							});
-							AsyncStorage.setItem('@aloner:broadcasts', JSON.stringify({data: this.state.messages})).catch((err) => {
+							AsyncStorage.setItem('@aloner:broadcasts', JSON.stringify(this.state)).catch((err) => {
 								console.error(err);
 							});
 						}).catch((err) => {

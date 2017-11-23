@@ -25,7 +25,7 @@ export class Login extends React.Component {
 					autoCorrect={false}
 					autoFocus={true}
 					keyboardType='email-address'
-					placeholder='email'
+					placeholder='Email'
 					value={this.state.email}
 					onChangeText={(value) => {
 						this.setState({
@@ -38,7 +38,7 @@ export class Login extends React.Component {
 					autoCapitalize='none'
 					autoCorrect={false}
 					secureTextEntry={true}
-					placeholder='password'
+					placeholder='Password'
 					value={this.state.password}
 					onChangeText={(value) => {
 						this.setState({

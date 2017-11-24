@@ -9,7 +9,7 @@ export const NavigationStack = StackNavigator(
 		},
 		Broadcast: {
 			screen: Broadcast
-		},
+		}
 	},
 	{
 		initialRouteName: 'Broadcast'

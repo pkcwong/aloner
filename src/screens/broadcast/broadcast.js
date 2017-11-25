@@ -9,8 +9,6 @@ import firebase from 'react-native-firebase';
 export class Broadcast extends React.Component {
 
 	static navigationOptions = {
-		title: 'Broadcast',
-		header: null,
 		tabBarLabel: 'Broadcast',
 		tabBarIcon: ({tintColor}) => (<MaterialIcons name='wifi-tethering'/>)
 	};

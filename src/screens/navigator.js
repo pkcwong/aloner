@@ -28,6 +28,6 @@ export const NavigationStack = StackNavigator(
 		},
 	},
 	{
-		initialRouteName: 'CreateEvent'
+		initialRouteName: 'Broadcast'
 	}
 );

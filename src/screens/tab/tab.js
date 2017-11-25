@@ -1,13 +1,13 @@
 import React from 'react';
 import { TabNavigator } from 'react-navigation';
 import { Broadcast } from "../broadcast/broadcast";
-import { Event } from "../Event/event";
-import { Group } from "../Group/group";
+import { Events } from "../events/events";
+import { Group } from "../groups/groups";
 
 export const Tab = TabNavigator(
 	{
 		Broadcast: {screen: Broadcast},
-		Event: {screen: Event},
+		Events: {screen: Events},
 		Group: {screen: Group}
 	},
 	{

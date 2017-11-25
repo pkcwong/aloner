@@ -1,7 +1,6 @@
 import { StackNavigator } from 'react-navigation';
 import { Tab } from "./tab/tab";
 import { Login } from "./login/login";
-import { Broadcast } from "./broadcast/broadcast";
 
 export const NavigationStack = StackNavigator(
 	{
@@ -10,9 +9,6 @@ export const NavigationStack = StackNavigator(
 		},
 		Login: {
 			screen: Login
-		},
-		Broadcast: {
-			screen: Broadcast
 		}
 	},
 	{

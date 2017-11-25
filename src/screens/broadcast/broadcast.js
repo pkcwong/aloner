@@ -1,6 +1,7 @@
 import React from 'react';
 import { AsyncStorage, View } from 'react-native';
 import { GiftedChat } from 'react-native-gifted-chat';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { style } from "./style";
 import { HOST } from "../../lib/server/server";
 import firebase from 'react-native-firebase';
@@ -9,7 +10,9 @@ export class Broadcast extends React.Component {
 
 	static navigationOptions = {
 		title: 'Broadcast',
-		header: null
+		header: null,
+		tabBarLabel: 'Broadcast',
+		tabBarIcon: ({tintColor}) => (<MaterialIcons name='wifi-tethering'/>)
 	};
 
 	constructor(props) {

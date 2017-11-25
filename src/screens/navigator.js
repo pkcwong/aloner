@@ -6,6 +6,7 @@ import { Category } from "./events/category";
 import { EventDetail } from "./events/eventDetail";
 import { CreateEvent} from "./events/createEvent";
 
+
 export const NavigationStack = StackNavigator(
 	{
 		Login: {
@@ -28,6 +29,6 @@ export const NavigationStack = StackNavigator(
 		},
 	},
 	{
-		initialRouteName: 'Broadcast'
+		initialRouteName: 'Category'
 	}
 );

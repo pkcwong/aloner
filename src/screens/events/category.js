@@ -16,7 +16,6 @@ export class Category extends React.Component {
 		};
 	}
 
-
 	render() {
 		return (
 		  <Container>
@@ -77,3 +76,4 @@ export class Category extends React.Component {
 		);
 	  }
 	}
+

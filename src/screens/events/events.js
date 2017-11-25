@@ -1,14 +1,15 @@
 import React from 'react';
 import { Image, ScrollView, View} from 'react-native';
 import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body } from 'native-base';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { style } from "./style";
 import firebase from 'react-native-firebase';
 
 export class Events extends React.Component {
 
 	static navigationOptions = {
-		title: 'Events',
-		header: null
+		tabBarLabel: 'Events',
+		tabBarIcon: ({tintColor}) => (<MaterialIcons name='event'/>)
 	};
 
 	constructor(props) {

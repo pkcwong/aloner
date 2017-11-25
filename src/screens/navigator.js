@@ -1,25 +1,17 @@
 import { StackNavigator } from 'react-navigation';
+import { Tab } from "./tab/tab";
 import { Login } from "./login/login";
-import { Broadcast } from "./broadcast/broadcast";
-import { Events } from "./events/events";
-import { Category } from "./events/category";
 
 export const NavigationStack = StackNavigator(
 	{
+		Tab: {
+			screen: Tab
+		},
 		Login: {
 			screen: Login
-		},
-		Broadcast: {
-			screen: Broadcast
-		},
-		Events: {
-			screen: Events
-		},
-		Category: {
-			screen: Category
-		},
+		}
 	},
 	{
-		initialRouteName: 'Category'
+		initialRouteName: 'Tab'
 	}
 );

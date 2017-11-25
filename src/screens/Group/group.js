@@ -7,7 +7,7 @@ export class Group extends React.Component {
 	static navigationOptions = {
 		title: 'Group',
 		header: null,
-		tabBarLabel: 'Broadcast',
+		tabBarLabel: 'Group',
 		tabBarIcon: ({tintColor}) => (<MaterialIcons name='group'/>)
 	};
 

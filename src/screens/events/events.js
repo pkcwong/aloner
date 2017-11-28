@@ -33,7 +33,7 @@ render() {
 				<Card key={i} style={style.cards}>
 					<CardItem>
 						<Left>
-							 <Image source={{uri: a.eventImage}} style={{height: 130, width: 130}}/>
+							 <Image source={{uri: a.eventImage}} style={{height: 120, width: 120}}/>
 						</Left>
 						<Body>
 							<Text style={style.title}>{a.eventName}</Text>
@@ -60,9 +60,6 @@ render() {
 								<View style={{margin:2}}>
 								  <Text style={style.description}>{a.eventLocation}</Text>
 								</View>
-							</View>
-							<View style={{margin: 2}}>
-								<Text key={i} style={style.description}>{a.eventLocation}</Text>
 							</View>
 						</Body>
 					</CardItem>

@@ -24,7 +24,7 @@ export class Category extends React.Component {
 				<Header />
 				<Content>
 					<List style={{ backgroundColor: 'white' }}>
-						<ListItem icon onPress={() => this.props.navigation.navigate('Events')}>
+						<ListItem icon onPress={() => (this.props.navigation.navigate('Events',{ename:"food"}))}>
 							<Left>
 								<Icon name="pizza" style={{ color: 'red' }} />
 							</Left>
@@ -32,7 +32,7 @@ export class Category extends React.Component {
 								<Text>Food</Text>
 							</Body>
 						</ListItem>
-						<ListItem icon onPress={() => this.props.navigation.navigate('Events')}>
+						<ListItem icon onPress={() => (this.props.navigation.navigate('Events',{ename:"sport"}))}>
 							<Left>
 								<Icon name="basketball" style={{ color: 'orange' }} />
 							</Left>
@@ -40,7 +40,7 @@ export class Category extends React.Component {
 								<Text>Sports</Text>
 							</Body>
 						</ListItem>
-						<ListItem icon onPress={() => this.props.navigation.navigate('Events')}>
+						<ListItem icon onPress={() => (this.props.navigation.navigate('Events',{ename:"study"}))}>
 							<Left>
 								<Icon name="book" style={{ color: 'blue' }} />
 							</Left>
@@ -48,7 +48,7 @@ export class Category extends React.Component {
 								<Text>Study</Text>
 							</Body>
 						</ListItem>
-						<ListItem icon onPress={() => this.props.navigation.navigate('Events')}>
+						<ListItem icon onPress={() => (this.props.navigation.navigate('Events',{ename:"Volunteer"}))}>
 							<Left>
 								<Icon name="heart" style={{ color: 'red' }} />
 							</Left>
@@ -56,7 +56,7 @@ export class Category extends React.Component {
 								<Text>Volunteer</Text>
 							</Body>
 						</ListItem>
-						<ListItem icon onPress={() => this.props.navigation.navigate('Events')}>
+						<ListItem icon onPress={() => (this.props.navigation.navigate('Events',{ename:"workshop"}))}>
 							<Left>
 								<Icon name="clipboard" style={{ color: 'green' }} />
 							</Left>
@@ -64,7 +64,7 @@ export class Category extends React.Component {
 								<Text>Extracurricular Workshop</Text>
 							</Body>
 						</ListItem>
-						<ListItem icon onPress={() => this.props.navigation.navigate('Events')}>
+						<ListItem icon onPress={() => (this.props.navigation.navigate('Events',{ename:"party"}))}>
 							<Left>
 								<Icon name="musical-notes" style={{ color: 'black' }} />
 							</Left>

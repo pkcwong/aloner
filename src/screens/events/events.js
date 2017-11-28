@@ -18,6 +18,7 @@ export class Events extends React.Component {
 
 	constructor(props) {
 		super(props);
+		console.log(props);
 		this.state = {
       eventsList: []
 		};
@@ -31,7 +32,9 @@ render() {
 	let Arr = this.state.eventsList.map((a, i) => {
 				return(
 				<Card key={i} style={style.cards}>
-					<CardItem button onPress={() => this.props.navigation.navigate('EventDetail', {a})}>
+					<CardItem button onPress={() => {
+						this.props.navigation.navigate('EventDetail',{a})
+						}}>
 						<Left>
 							 <Image source={{uri: a.eventImage}} style={{height: 120, width: 120}}/>
 						</Left>
@@ -90,7 +93,8 @@ render() {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({
-				method: 'dump'
+				'method': 'category',
+				'category': this.props.navigation.state.params.ename
 			})
 		}).then((response_dump) => {
 			response_dump.json().then((res_dump) => {
@@ -114,9 +118,34 @@ render() {
 							event['eventDate'] = new Date(res_query['time']['start']).toDateString();
 							event['eventTime'] = new Date(res_query['time']['start']).getHours() + ':' + new Date(res_query['time']['start']).getMinutes() + ' - ' + new Date(res_query['time']['end']).getHours() + ':' + new Date(res_query['time']['end']).getMinutes();
 							event['eventLocation'] = res_query['location'];
+							event['eventVacancy']=res_query['quota'];
+							event['eventEnroll']=res_query['enrollment'];
+							event['eventDescription']=res_query['description'];
+							fetch(HOST +　'/api/user', {
+								method: 'POST',
+								headers: {
+									'Accept': 'application/json',
+									'Content-Type': 'application/json'
+								},
+								body: JSON.stringify({
+									uid: res_query['owner']
+								})
+							}).then((e)=>{
+								e.json().then((haha)=>{
+									event['eventUser']=haha['firstname']+" "+haha['lastname'];
+								}).catch((err) => {
+									console.error(err);
+								});
+
+							}).catch((err) => {
+								console.error(err);
+							});
+							//event['eventUser']=res_query['owner'];
+							
 							this.setState({
 								eventsList: this.state.eventsList.concat(event)
 							});
+							
 						});
 					}).catch((err) => {
 						console.error(err);

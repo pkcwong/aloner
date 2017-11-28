@@ -31,7 +31,7 @@ render() {
 	let Arr = this.state.eventsList.map((a, i) => {
 				return(
 				<Card key={i} style={style.cards}>
-					<CardItem>
+					<CardItem button onPress={() => this.props.navigation.navigate('EventDetail')}>
 						<Left>
 							 <Image source={{uri: a.eventImage}} style={{height: 120, width: 120}}/>
 						</Left>

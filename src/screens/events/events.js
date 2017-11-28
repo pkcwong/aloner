@@ -1,20 +1,23 @@
 import React from 'react';
 import { Image, ScrollView, View} from 'react-native';
-import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body } from 'native-base';
+import { Container, Content, Card, CardItem, Thumbnail, Text, Button, Icon } from 'native-base';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { style } from "./style";
 import firebase from 'react-native-firebase';
+import { Header, Title, Left, Right, Body} from 'native-base';
+
 
 export class Events extends React.Component {
 
 	static navigationOptions = {
+		header: null,
 		tabBarLabel: 'Events',
-		tabBarIcon: ({tintColor}) => (<MaterialIcons name='event'/>)
+		tabBarIcon: ({tintColor}) => (<MaterialIcons size={30} color="#ffffff" name='event'/>)
 	};
 
 	constructor(props) {
 		super(props);
-		this.state = {
+		this.state = {		
 			eventsList:[/*{eventImage: 'https://static.pexels.com/photos/132037/pexels-photo-132037.jpeg', eventName:'Hiking', eventDate:'20/11/2107', eventTime:'11:00-18:00',eventLocation:'HKUST1'},
 						{eventImage: 'https://static.pexels.com/photos/132037/pexels-photo-132037.jpeg', eventName:'Hiking2', eventDate:'20/11/2107', eventTime:'11:00-18:00',eventLocation:'HKUST2'},
 						{eventImage: 'https://static.pexels.com/photos/132037/pexels-photo-132037.jpeg', eventName:'Hiking3', eventDate:'20/11/2107', eventTime:'11:00-18:00',eventLocation:'HKUST3'},
@@ -67,11 +70,18 @@ render() {
 	 
 	
 	return (
+		<Container>
+				<Header style={style.Header}>
+					<Body>
+						<Title>Events</Title>
+					</Body>
+			</Header>
       <ScrollView>
         <Content style={{margin:20}}>
 			{ Arr }
         </Content>
       </ScrollView>
+		</Container>
     );
   }
 		

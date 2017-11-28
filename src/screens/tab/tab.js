@@ -12,12 +12,19 @@ export const Tab = TabNavigator(
 	},
 	{
 		tabBarOptions: {
-			activeTintColor: '#FFFFFF',
+			inactiveTintColor: '#FFFFFF',
+			activeTintColor: '#FFFF00',
 			labelStyle: {
-				fontSize: 16,
+				fontSize: 14,
 				fontWeight: '600'
 			},
-			showIcon: true
+			style: {
+				backgroundColor: '#5FAAFA',
+			},
+			showIcon: true,
+			iconStyle: {
+				width: 100
+			}
 		},
 		tabBarPosition: 'bottom'
 	}

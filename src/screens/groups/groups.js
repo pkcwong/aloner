@@ -44,8 +44,8 @@ export class Group extends React.Component {
 					return (
 					<Button  key={key}>{prop.}</Button>
 					);
-				})} */}
-				{/* <Card>
+				})}
+				<Card>
 					<CardItem>
 						<Icon active name="logo-googleplus" />
 						<Text>Google Plus</Text>
@@ -53,8 +53,8 @@ export class Group extends React.Component {
 							<Icon name="arrow-forward" />
 						</Right>
 					</CardItem>
-				</Card> */}
-				        {/* <FlatList
+				</Card>
+				<FlatList
 					data={[
 						{key: 'Devin'},
 						{key: 'Jackson'},

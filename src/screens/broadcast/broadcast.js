@@ -5,14 +5,14 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { style } from "./style";
 import { HOST } from "../../lib/server/server";
 import firebase from 'react-native-firebase';
-import { Header, Title, Left, Right, Body} from 'native-base';
-// Container, Content, Footer, FooterTab, Button, Icon, Text 
+import {Button, Icon,Header, Title, Left, Right, Body} from 'native-base';
+// Container, Content, Footer, FooterTab,   Text 
 export class Broadcast extends React.Component {
 
 	static navigationOptions = {
 		header: null,
 		tabBarLabel: 'Broadcast',
-		tabBarIcon: ({tintColor}) => (<MaterialIcons size={30} color="#ffffff" name='wifi-tethering'/>)
+		tabBarIcon: ({tintColor}) => (<MaterialIcons size={24} color="#ffffff" name='wifi-tethering'/>)
 	};
 
 	constructor(props) {
@@ -80,6 +80,7 @@ export class Broadcast extends React.Component {
 	}
 
 	render() {
+		const { navigate } = this.props.navigation;
 		return (
 			<View
 				style={style.view}
@@ -93,7 +94,17 @@ export class Broadcast extends React.Component {
 					<Body>
 						<Title>Messages Nearby</Title>
 					</Body>
-					
+					{/* <Right>
+						<Button transparent>
+						<Icon 
+							onPress={() =>
+								navigate('CreateEvent')
+							}
+							
+							name='add-circle' style={{fontSize: 24}} />
+						
+						</Button> 
+					</Right> */}
 				</Header>
 				<GiftedChat
 					messages={this.state.messages}

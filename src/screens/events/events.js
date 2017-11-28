@@ -13,7 +13,7 @@ export class Events extends React.Component {
 	static navigationOptions = {
 		header: null,
 		tabBarLabel: 'Events',
-		tabBarIcon: ({tintColor}) => (<MaterialIcons size={30} color="#ffffff" name='event'/>)
+		tabBarIcon: ({tintColor}) => (<MaterialIcons size={24} color="#ffffff" name='event'/>)
 	};
 
 	constructor(props) {

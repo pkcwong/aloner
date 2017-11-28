@@ -11,7 +11,7 @@ export class Group extends React.Component {
 	static navigationOptions = {
 		header: null,
 		tabBarLabel: 'Group',
-		tabBarIcon: ({tintColor}) => (<MaterialIcons size={30} color="#ffffff" name='group'/>)
+		tabBarIcon: ({tintColor}) => (<MaterialIcons size={24} color="#ffffff" name='group'/>)
 	};
 
 	constructor(props) {
@@ -40,11 +40,11 @@ export class Group extends React.Component {
 						<Title>Group Chat</Title>
 					</Body>
 				</Header>
-				{initialArr.map((prop, key) => {
+				{/* {initialArr.map((prop, key) => {
 					return (
 					<Button  key={key}>{prop.}</Button>
 					);
-				})}
+				})} */}
 				{/* <Card>
 					<CardItem>
 						<Icon active name="logo-googleplus" />
@@ -54,7 +54,7 @@ export class Group extends React.Component {
 						</Right>
 					</CardItem>
 				</Card> */}
-				        <FlatList
+				        {/* <FlatList
 					data={[
 						{key: 'Devin'},
 						{key: 'Jackson'},
@@ -74,7 +74,7 @@ export class Group extends React.Component {
 						]}
 						renderItem={({item}) => <Text style={styles.item}>{item}</Text>}
 						renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section.title}</Text>}
-					/>
+					/> */}
 				<Card>
 					<CardItem>
 						<Left>

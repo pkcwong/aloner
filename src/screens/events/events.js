@@ -13,7 +13,7 @@ export class Events extends React.Component {
 	static navigationOptions = {
 		header: null,
 		tabBarLabel: 'Events',
-		tabBarIcon: ({tintColor}) => (<MaterialIcons size={30} color="#ffffff" name='event'/>)
+		tabBarIcon: ({tintColor}) => (<MaterialIcons size={24} color="#ffffff" name='event'/>)
 	};
 
 	constructor(props) {
@@ -29,6 +29,7 @@ componentWillMount() {
 }
 
 render() {
+	const { navigate } = this.props.navigation;	
 	let Arr = this.state.eventsList.map((a, i) => {
 				return(
 				<Card key={i} style={style.cards}>
@@ -75,6 +76,15 @@ render() {
 					<Body>
 					<Title>Events</Title>
 					</Body>
+					<Right>
+						<Button transparent>
+						<Icon 
+							onPress={() =>
+								navigate('CreateEvent')
+							}
+							name='add-circle' style={{fontSize: 24}} />
+						</Button> 
+					</Right>
 				</Header>
 				<ScrollView>
 					<Content style={{margin: 20}}>

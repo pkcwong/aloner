@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Header, Content, List, ListItem, Text, Icon, Left, Body, Right, Switch } from 'native-base';
+import { Body, Button, Container, Content, Header, Left,List, ListItem, Title, Text, Icon,  Right, Switch } from 'native-base';
 import { style } from "./style";
 import firebase from 'react-native-firebase';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -9,7 +9,7 @@ export class Category extends React.Component {
 	static navigationOptions = {
 		header: null,
 		tabBarLabel: 'Events',
-		tabBarIcon: ({ tintColor }) => (<MaterialIcons size={30} color="#ffffff" name='event' />)
+		tabBarIcon: ({ tintColor }) => (<MaterialIcons size={24} color="#ffffff" name='event' />)
 	};
 
 	constructor(props) {
@@ -19,9 +19,23 @@ export class Category extends React.Component {
 	}
 
 	render() {
+		const { navigate } = this.props.navigation;	
 		return (
 			<Container>
-				<Header />
+				<Header style={style.Header}>
+					<Body>
+					<Title>Category</Title>
+					</Body>
+					<Right>
+						<Button transparent>
+						<Icon 
+							onPress={() =>
+								navigate('CreateEvent')
+							}
+							name='add-circle' style={{fontSize: 24}} />
+						</Button> 
+					</Right>
+				</Header>
 				<Content>
 					<List style={{ backgroundColor: 'white' }}>
 						<ListItem icon onPress={() => (this.props.navigation.navigate('Events',{ename:"food"}))}>

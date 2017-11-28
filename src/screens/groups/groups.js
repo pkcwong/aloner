@@ -78,9 +78,20 @@ export class Group extends React.Component {
 				<Card>
 					<CardItem>
 						<Left>
-						<Thumbnail source={{uri: 'https://firebasestorage.googleapis.com/v0/b/friendlychat-49fcf.appspot.com/o/pexels-photo.jpg?alt=media&token=29881396-d6fd-4bf0-b9d0-09a2a64906ba'}} />
+						<Thumbnail source={{uri: 'https://static.pexels.com/photos/172738/pexels-photo-172738.jpeg'}} />
 						<Body>
-							<Text>First Group</Text>
+							<Text>One person Group</Text>
+							<Text note>Hi! Is anyone here?</Text>
+						</Body>
+						</Left>
+					</CardItem>
+				</Card>
+				<Card>
+					<CardItem>
+						<Left>
+						<Thumbnail source={{uri: 'https://static.pexels.com/photos/582428/pexels-photo-582428.jpeg'}} />
+						<Body>
+							<Text>Not Together Group</Text>
 							<Text note>Hello</Text>
 						</Body>
 						</Left>
@@ -89,10 +100,10 @@ export class Group extends React.Component {
 				<Card>
 					<CardItem>
 						<Left>
-						<Thumbnail source={{uri: 'https://firebasestorage.googleapis.com/v0/b/friendlychat-49fcf.appspot.com/o/pexels-photo.jpg?alt=media&token=29881396-d6fd-4bf0-b9d0-09a2a64906ba'}} />
+						<Thumbnail source={{uri: 'https://static.pexels.com/photos/14737/pexels-photo.jpg'}} />
 						<Body>
-							<Text>Group2</Text>
-							<Text note>Hi</Text>
+							<Text>Lunch Group</Text>
+							<Text note>Will all of you be freee at 12:30pm?</Text>
 						</Body>
 						</Left>
 					</CardItem>

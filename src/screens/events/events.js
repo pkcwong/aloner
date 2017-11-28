@@ -23,6 +23,10 @@ export class Events extends React.Component {
 		};
 	}
 
+componentWillMount() {
+	this.refresher();
+}
+
 render() {
 	let Arr = this.state.eventsList.map((a, i) => {
 				return(

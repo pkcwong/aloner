@@ -60,7 +60,6 @@ render() {
 							<View style={{margin: 2}}>
 								<Text key={i} style={style.description}>{a.eventLocation}</Text>
 							</View>
-						</View>
 						</Body>
 					</CardItem>
 				</Card>

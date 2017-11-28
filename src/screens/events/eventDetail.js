@@ -15,6 +15,7 @@ export class EventDetail extends React.Component {
 
 	constructor(props) {
 		super(props);
+		console.log(props);
 		this.state = {
 			eventsList:[{eventImage: 'https://static.pexels.com/photos/132037/pexels-photo-132037.jpeg', eventName:'Hiking', eventDate:'20/11/2107', eventTime:'11:00-18:00',eventLocation:'HKUST,LG7',eventVacancy:'10',peopleJoined:'5',eventOrganizer:'Ada Yung', evetDescription:'This is a very long event description for testing.\n\nThis is a very long event description for testing.\n\nThis is a very long event description for testing.\n\nThis is a very long event description for testing.\n\nThis is a very long event description for testing.\n\n'}]
 		};
@@ -26,8 +27,8 @@ render() {
 		return(
 			<Content key={i} style={{backgroundColor:'white'}}>
 				<View style={{alignItems: 'center', marginTop:20}}>
-					<Thumbnail square source={{uri: a.eventImage}} style={{width:130, height:130, borderRadius: 10}}/>
-					<Text style={{fontSize: 20, color:'#0496cc', fontWeight: 'bold',marginTop:10}}>Hiking</Text>
+					<Thumbnail square source={{uri: this.props.navigation.state.params.a.eventImage}} style={{width:130, height:130, borderRadius: 10}}/>
+					<Text style={{fontSize: 20, color:'#0496cc', fontWeight: 'bold',marginTop:10}}>{this.props.navigation.state.params.a.eventName}</Text>
 				</View>
 				<View style={{borderBottomColor: '#e3e5e8', borderBottomWidth: 2, width: width, marginTop:10}}></View>
 				<View style={{height:50,flexDirection:'row',marginTop:10}}>
@@ -50,7 +51,7 @@ render() {
 						<Text style={style.detailTitle}>Date :</Text>
 					</View>
 					<View style={ {flex:3,margin:5}}>
-						<Text style={style.detailDescription}>{a.eventDate}</Text>
+						<Text style={style.detailDescription}>{this.props.navigation.state.params.a.eventDate}</Text>
 					</View>
 				</View>
 				<View style={ {flexDirection:'row',marginTop:5, marginLeft:30}}>
@@ -61,7 +62,7 @@ render() {
 						<Text style={style.detailTitle}>Time :</Text>
 					</View>
 					<View style={ {flex:3,margin:5}}>
-						<Text style={style.detailDescription}>{a.eventTime}</Text>
+						<Text style={style.detailDescription}>{this.props.navigation.state.params.a.eventTime}</Text>
 					</View>
 				</View>
 				<View style={ {flexDirection:'row',marginTop:5, marginLeft:30}}>
@@ -72,7 +73,7 @@ render() {
 						<Text style={style.detailTitle}>Location :</Text>
 					</View>
 					<View style={ {flex:3,margin:5}}>
-						<Text style={style.detailDescription}>{a.eventLocation}</Text>
+						<Text style={style.detailDescription}>{this.props.navigation.state.params.a.eventLocation}</Text>
 					</View>
 				</View>
 				<View style={ {flexDirection:'row',marginTop:5, marginLeft:30}}>
@@ -83,8 +84,8 @@ render() {
 						<Text style={style.detailTitle}>Vacancy :</Text>
 					</View>
 					<View style={ {flex:3,margin:5}}>
-						<Text style={style.detailDescription}>{a.eventVacancy}   
-						<Text style={{fontSize:10,color: 'gray'}}>	({Number.parseInt(a.eventVacancy, 10)-Number.parseInt(a.peopleJoined, 10)} Places Left)</Text>
+						<Text style={style.detailDescription}>{this.props.navigation.state.params.a.eventVacancy}   
+		<Text style={{fontSize:10,color: 'gray'}}>	( {this.props.navigation.state.params.a.eventVacancy-this.props.navigation.state.params.a.eventEnroll.length} Places Left)</Text>
 						</Text>
 					</View>
 				</View>
@@ -96,7 +97,7 @@ render() {
 						<Text style={style.detailTitle}>Organizer :</Text>
 					</View>
 					<View style={ {flex:3,margin:5}}>
-						<Text style={style.detailDescription}>{a.eventOrganizer}</Text>
+						<Text style={style.detailDescription}>{this.props.navigation.state.params.a.eventUser}</Text>
 					</View>
 				</View>
 				<View style={{borderBottomColor: '#e3e5e8', borderBottomWidth: 2, width: width, marginTop:10}}></View>
@@ -105,7 +106,7 @@ render() {
 					<Text style={style.detailTitle}>Description:</Text>
 				</View>
 				<View style={ {margin:5, marginLeft:30}}>
-					<Text style={style.detailDescription}>{a.evetDescription}</Text>
+					<Text style={style.detailDescription}>{this.props.navigation.state.params.a.eventDescription}</Text>
 				</View>
 				
 			</Content>

@@ -54,7 +54,7 @@ export class Category extends React.Component {
 								<Text>Sports</Text>
 							</Body>
 						</ListItem>
-						<ListItem icon onPress={() => (this.props.navigation.navigate('Events',{ename:"study"}))}>
+						<ListItem icon onPress={() => (this.props.navigation.navigate('Events',{ename:"studys"}))}>
 							<Left>
 								<Icon name="book" style={{ color: 'blue' }} />
 							</Left>
@@ -62,7 +62,7 @@ export class Category extends React.Component {
 								<Text>Study</Text>
 							</Body>
 						</ListItem>
-						<ListItem icon onPress={() => (this.props.navigation.navigate('Events',{ename:"Volunteer"}))}>
+						<ListItem icon onPress={() => (this.props.navigation.navigate('Events',{ename:"volunteer"}))}>
 							<Left>
 								<Icon name="heart" style={{ color: 'red' }} />
 							</Left>

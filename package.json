@@ -22,6 +22,8 @@
 		"react-navigation": "^1.0.0-beta.19",
 		"simple-react-form": "^2.0.1",
 		"simple-react-form-material-ui": "^1.7.13"
+		"react-native-vector-icons": "^4.4.2",
+		"react-navigation": "^1.0.0-beta.21"
 	},
 	"devDependencies": {
 		"babel-jest": "21.2.0",

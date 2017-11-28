@@ -9,11 +9,11 @@ export const style = {
 	description: {
 		fontSize:14, color: 'gray'
 	},
-	detailTitle:{
-
-	},
 	detailDescription:{
 		color:'gray'
+  },
+	Header:{
+		backgroundColor: "#5FAAFA" 
 	}
 
 };

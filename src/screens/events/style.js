@@ -4,10 +4,10 @@ export const style = {
 		flex: 0
 	},
 	title:{
-		fontSize:22
+		fontSize:20
 	},
 	description: {
-		fontSize:14, color: 'gray'
+		fontSize:13, color: 'gray'
 	},
 	detailDescription:{
 		color:'gray'

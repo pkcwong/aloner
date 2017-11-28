@@ -1,6 +1,5 @@
 import React from 'react';
-import { Image, ScrollView, View,Text, TouchableOpacity} from 'react-native';
-import { Container, Header, Content, Icon } from 'native-base';
+import { Container, Header, Content, List, ListItem, Text, Icon, Left, Body, Right, Switch } from 'native-base';
 import { style } from "./style";
 import firebase from 'react-native-firebase';
 
@@ -17,26 +16,64 @@ export class Category extends React.Component {
 		};
 	}
 
-render() {
-	
-	return (
-      <ScrollView>
-				<View style={ {flexDirection:'row',height:100,marginTop:20}}>
-						<TouchableOpacity onPress={() => this.props.navigation.navigate('Events')}> 
-								<View style={ {flex:3,backgroundColor:"blue",margin:5}}>
-								<Icon name='home' style={{fontSize: 60, color: 'white'}} />
-								<Text style={ {fontSize:16}}>Food</Text>
-								</View>
-						</TouchableOpacity>
-						<TouchableOpacity onPress={() =>this.props.navigation.navigate('Events')}>
-								<View style={ {flex:3,backgroundColor:"blue",margin:5}}>
-								<Icon name='home' style={{fontSize: 60, color: 'white'}} />
-								<Text style={ {fontSize:16}}>Food</Text>
-								</View>
-						</TouchableOpacity>     
-				</View>
-      </ScrollView>
-    );
-  }
-		
-}
+	render() {
+		return (
+		  <Container>
+			<Header />
+			<Content>
+			  <List style={{backgroundColor:'white'}}>
+				<ListItem icon onPress={() => this.props.navigation.navigate('Events')}>
+				  <Left>
+					<Icon name="pizza" style={{color:'red'}} / >
+				  </Left>
+				  <Body>
+					<Text>Food</Text>
+				  </Body>
+				</ListItem>
+				<ListItem icon onPress={() => this.props.navigation.navigate('Events')}>
+				  <Left>
+					<Icon name="basketball" style={{color:'orange'}} />
+				  </Left>
+				  <Body>
+					<Text>Sports</Text>
+				  </Body>
+				</ListItem>
+				<ListItem icon onPress={() => this.props.navigation.navigate('Events')}>
+				  <Left>
+					<Icon name="book" style={{color:'blue'}}/>
+				  </Left>
+				  <Body>
+					<Text>Study</Text>
+				  </Body>
+				</ListItem>
+				<ListItem icon onPress={() => this.props.navigation.navigate('Events')}>
+				  <Left>
+					<Icon name="heart" style={{color:'red'}}/>
+				  </Left>
+				  <Body>
+					<Text>Volunteer</Text>
+				  </Body>
+				</ListItem>
+				<ListItem icon onPress={() => this.props.navigation.navigate('Events')}>
+				  <Left>
+					<Icon name="clipboard" style={{color:'green'}}/>
+				  </Left>
+				  <Body>
+					<Text>Extracurricular Workshop</Text>
+				  </Body>
+				</ListItem>
+				<ListItem icon onPress={() => this.props.navigation.navigate('Events')}>
+				  <Left>
+					<Icon name="musical-notes" style={{color:'black'}}/>
+				  </Left>
+				  <Body>
+					<Text>Party</Text>
+				  </Body>
+				</ListItem>
+			  </List>
+			</Content>
+		  </Container>
+		);
+	  }
+	}
+

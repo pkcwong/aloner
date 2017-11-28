@@ -80,7 +80,7 @@ export class Broadcast extends React.Component {
 	}
 
 	render() {
-		const { navigate } = this.props.navigation;
+		// const { navigate } = this.props.navigation;
 		return (
 			<View
 				style={style.view}

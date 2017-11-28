@@ -28,6 +28,7 @@ componentWillMount() {
 }
 
 render() {
+	const { navigate } = this.props.navigation;	
 	let Arr = this.state.eventsList.map((a, i) => {
 				return(
 				<Card key={i} style={style.cards}>
@@ -72,6 +73,15 @@ render() {
 					<Body>
 					<Title>Events</Title>
 					</Body>
+					<Right>
+						<Button transparent>
+						<Icon 
+							onPress={() =>
+								navigate('CreateEvent')
+							}
+							name='add-circle' style={{fontSize: 24}} />
+						</Button> 
+					</Right>
 				</Header>
 				<ScrollView>
 					<Content style={{margin: 20}}>

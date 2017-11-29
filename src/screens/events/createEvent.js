@@ -67,7 +67,6 @@ export class CreateEvent extends React.Component {
 			ImageSource:null,
 			selected2: "",
 			eventName:"",
-			eventDate:"",
 			eventTimeStart:"",
 			eventTimeEnd:"",
 			eventLocation:"",
@@ -110,17 +109,6 @@ render() {
 					onChangeText={(value) => {
 						this.setState({
 							eventName: value
-						});
-					}}
-				/>
-				</Item>
-				<Item floatingLabel>
-				<Label>Date:</Label>
-				<Input 
-					value={this.state.eventDate}
-					onChangeText={(value) => {
-						this.setState({
-							eventDate: value
 						});
 					}}
 				/>
@@ -169,7 +157,7 @@ render() {
 					}}
 				/>
 				</Item>
-				<Item floatingLabel last>
+				<Item floatingLabel >
 				<Label>Description:</Label>
 				<Input 
 					value={this.state.eventDescription}
@@ -180,6 +168,7 @@ render() {
 					}}
 				/>
 				</Item>
+
 				<Picker
 					mode="dialog"
 					selectedValue={this.state.selected2}
@@ -225,8 +214,8 @@ render() {
 						location:this.state.eventLocation,
 						quota:this.state.eventVacancy,
 						time:{
-							start:this.state.eventTimeStart,
-							end:this.state.eventTimeEnd,
+							start:new Date(this.state.eventTimeStart),
+							end:new Date(this.state.eventTimeEnd),
 						}
 					})
 				}).then(() => {

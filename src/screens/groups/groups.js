@@ -4,6 +4,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { Header, Title, Left, Right, Body} from 'native-base'; //For tab bar
 import { style } from "./style";
 import { Card, CardItem, Icon, Text, Thumbnail} from 'native-base'; //For card view
+import { Image } from 'native-base';
 
 
 export class Group extends React.Component {
@@ -17,11 +18,12 @@ export class Group extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {		
-			eventsChatGroupList:[{eventImage: 'https://static.pexels.com/photos/132037/pexels-photo-132037.jpeg', eventName:'Hiking', eventId: '111', eventLastMsg: 'Hello everyone!'},
-						{eventImage: 'https://static.pexels.com/photos/132037/pexels-photo-132037.jpeg', eventName:'Hiking', eventId: '112', eventLastMsg: 'Hello everyone!'},
-						{eventImage: 'https://static.pexels.com/photos/132037/pexels-photo-132037.jpeg', eventName:'Hiking', eventId: '113', eventLastMsg: 'Hello everyone!'},
-						{eventImage: 'https://static.pexels.com/photos/132037/pexels-photo-132037.jpeg', eventName:'Hiking', eventId: '114', eventLastMsg: 'Hello everyone!'},
-						{eventImage: 'https://static.pexels.com/photos/132037/pexels-photo-132037.jpeg', eventName:'Hiking', eventId: '115', eventLastMsg: 'Hello everyone!'},
+			eventsChatGroupList:[
+						// {eventImage: 'https://static.pexels.com/photos/132037/pexels-photo-132037.jpeg', eventName:'Hiking', eventId: '111', eventLastMsg: 'Hello everyone!'},
+						// {eventImage: 'https://static.pexels.com/photos/132037/pexels-photo-132037.jpeg', eventName:'Hiking', eventId: '112', eventLastMsg: 'Hello everyone!'},
+						// {eventImage: 'https://static.pexels.com/photos/132037/pexels-photo-132037.jpeg', eventName:'Hiking', eventId: '113', eventLastMsg: 'Hello everyone!'},
+						// {eventImage: 'https://static.pexels.com/photos/132037/pexels-photo-132037.jpeg', eventName:'Hiking', eventId: '114', eventLastMsg: 'Hello everyone!'},
+						// {eventImage: 'https://static.pexels.com/photos/132037/pexels-photo-132037.jpeg', eventName:'Hiking', eventId: '115', eventLastMsg: 'Hello everyone!'},
 			]
 		};
 	}
@@ -40,47 +42,23 @@ export class Group extends React.Component {
 						<Title>Group Chat</Title>
 					</Body>
 				</Header>
-				{/* {initialArr.map((prop, key) => {
-					return (
-					<Button  key={key}>{prop.}</Button>
-					);
-				})}
-				<Card>
-					<CardItem>
-						<Icon active name="logo-googleplus" />
-						<Text>Google Plus</Text>
-						<Right>
-							<Icon name="arrow-forward" />
-						</Right>
-					</CardItem>
-				</Card>
-				<FlatList
-					data={[
-						{key: 'Devin'},
-						{key: 'Jackson'},
-						{key: 'James'},
-						{key: 'Joel'},
-						{key: 'John'},
-						{key: 'Jillian'},
-						{key: 'Jimmy'},
-						{key: 'Julie'},
-					]}
-					renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
-					/>
-					<SectionList
-						sections={[
-							{title: 'D', data: ['Devin']},
-							{title: 'J', data: ['Jackson', 'James', 'Jillian', 'Jimmy', 'Joel', 'John', 'Julie']},
-						]}
-						renderItem={({item}) => <Text style={styles.item}>{item}</Text>}
-						renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section.title}</Text>}
-					/> */}
 				<Card>
 					<CardItem>
 						<Left>
-						<Thumbnail source={{uri: 'https://firebasestorage.googleapis.com/v0/b/friendlychat-49fcf.appspot.com/o/pexels-photo.jpg?alt=media&token=29881396-d6fd-4bf0-b9d0-09a2a64906ba'}} />
+						<Thumbnail source={{uri: 'https://static.pexels.com/photos/172738/pexels-photo-172738.jpeg'}} />
 						<Body>
-							<Text>First Group</Text>
+							<Text>One person Group</Text>
+							<Text note>Hi! Is anyone here?</Text>
+						</Body>
+						</Left>
+					</CardItem>
+				</Card>
+				<Card>
+					<CardItem>
+						<Left>
+						<Thumbnail source={{uri: 'https://static.pexels.com/photos/582428/pexels-photo-582428.jpeg'}} />
+						<Body>
+							<Text>No Together Group</Text>
 							<Text note>Hello</Text>
 						</Body>
 						</Left>
@@ -89,10 +67,10 @@ export class Group extends React.Component {
 				<Card>
 					<CardItem>
 						<Left>
-						<Thumbnail source={{uri: 'https://firebasestorage.googleapis.com/v0/b/friendlychat-49fcf.appspot.com/o/pexels-photo.jpg?alt=media&token=29881396-d6fd-4bf0-b9d0-09a2a64906ba'}} />
+						<Thumbnail source={{uri: 'https://static.pexels.com/photos/14737/pexels-photo.jpg'}} />
 						<Body>
-							<Text>Group2</Text>
-							<Text note>Hi</Text>
+							<Text>Lunch Group</Text>
+							<Text note>Will all of you be freee at 12:30pm?</Text>
 						</Body>
 						</Left>
 					</CardItem>
